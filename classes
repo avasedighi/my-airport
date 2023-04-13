@@ -1,8 +1,8 @@
 class Airline:
-  def __init__(self, airlineName, callSign, airlineType, phoneNumber):
+  def __init__(self, airlineName, callSign, airlineType, phoneNumber, hubsList):
     self.airlineName = airlineName
     self.callSign = callSign
     self.airlineType = airlineType
-    self.phoneNumber = str(phoneNumber)
-
-a1 = Airline('IranAir', 'AiranAir', 'International', '021 4662 1888')
+    self.phoneNumber = phoneNumber
+    self.hubsList = hubsList
+a1 = Airline('IranAir', 'AiranAir', 'International', '021 4662 1888', ['MehrAbad', 'ImamKhomeini'])
