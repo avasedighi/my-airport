@@ -12,3 +12,12 @@ class Airline:
             return True
         else:
             return False
+
+class Passenger:
+    def __init__(self, name, birthdate, sex, Nationality, idCode):
+        self.name = name
+        self.birthdate = birthdate
+        self.sex = sex
+        self.Nationality = Nationality
+        self.idCode = idCode
+    def 
