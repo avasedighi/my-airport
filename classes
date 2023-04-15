@@ -68,3 +68,27 @@ class Aircraft:
         if self.firstFlight.age() <= 25:
             return True
         return False
+
+
+
+
+class FlightCard:
+    def __init__(self, flightNumber: str, passengerName: str, passengerLastName: str, seatNumber: str, carrier: Aircraft, gate: str):
+        self.flightNumber = flightNumber
+        self.passengerName = passengerName
+        self.passengerLastName = passengerLastName
+        self.seatNumber = seatNumber
+        self.carrier = carrier
+        self.gate = gate
+    def hasWindow(self):
+        if self.seatNumber[0] == self.carrier.seatLetters[0]:
+            return True
+        elif self.seatNumber[0] == self.carrier.seatLetters[-1]:
+            return True
+        return False
+    def showTheGate(self):
+        print(self.gate)
+    def closeToCockpit(self):
+        if eval(self.seatNumber[1:-1]) <= (self.carrier.capacity / 3):
+            return True
+        return False
