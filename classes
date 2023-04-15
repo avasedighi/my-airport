@@ -34,3 +34,20 @@ class Passenger:
             return True
         else:
             return False
+
+
+
+class Ticket:
+    def __init__(self, ticketID: str, flightNumber: str, passenger: Passenger, ticketType: str, price: float, flightAllowedLuggage: float):
+        self.ticketID = ticketID
+        self.flightNumber = flightNumber
+        self._passenger = passenger
+        self.ticketType = ticketType
+        self.price = price
+        self.flightAllowedLuggage = flightAllowedLuggage
+    def getFlightNumber(self):
+        print(self.flightNumber)
+    def showPrice(self):
+        print(self.price)
+    def getReservationID(self):
+        return id(Passenger)
