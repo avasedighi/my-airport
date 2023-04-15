@@ -53,30 +53,22 @@ class Ticket:
 
     
     
-
-
-
-
-class Airline:
-    def __init__(self, airlineName, callSign, airlineType, phoneNumber, hubsList):
-        self.airlineName = airlineName
-        self.callSign = callSign
-        self.airlineType = airlineType
-        self.phoneNumber = phoneNumber
-        self.hubsList = hubsList
-    def showHubsList(self):
-        print( self.hubsList )
-    def isInternational(self):
-        if self.airlineType == 'international':
-            return True
-        else:
-            return False
-
-class Passenger:
-    def __init__(self, name, birthdate, sex, Nationality, idCode):
+class Aircraft:
+    def __init__(self, name: str, manufacturer: str, lengthInMeter: float, cockpitCrew: int, corgoCapacity: float, seatLetters: list, firstFlight: BirthDate):
         self.name = name
-        self.birthdate = birthdate
-        self.sex = sex
-        self.Nationality = Nationality
-        self.idCode = idCode
-    def 
+        self.manufacturer = manufacturer
+        self.lengthInMeter = lengthInMeter
+        self._cockpitCrew = cockpitCrew
+        self._corgoCapacity = corgoCapacity
+        self.seatLetters = seatLetters
+        self.firstFlight = firstFlight
+    def howOld(self):
+        return self.firstFlight.age()
+    def isNew(self):
+        if self.firstFlight.age() <= 25:
+            return True
+        return False
+  
+
+
+
