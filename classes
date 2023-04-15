@@ -88,7 +88,7 @@ class FlightCard:
         return False
     def showTheGate(self):
         print(self.gate)
-    def closeToCockpit(self):
-        if eval(self.seatNumber[1:-1]) <= (self.carrier.capacity / 3):
+    def isCloseToCockpit(self):
+        if eval(self.seatNumber[1:-1]) <= (self.carrier._capacity / (len(self.carrier.seatLetters)*3)):
             return True
         return False
