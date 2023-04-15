@@ -44,12 +44,12 @@ class Ticket:
         self.ticketType = ticketType
         self.price = price
         self.flightAllowedLuggage = flightAllowedLuggage
-    def getFlightNumber( self ):
-        print( self.flightNumber )
+    def getFlightNumber(self):
+        print(self.flightNumber)
     def showPrice(self):
-        print( self.price )
-    def _getReservationID( self ):
-        return id( Passenger )
+        print(self.price)
+    def _getReservationID(self):
+        return id(Passenger)
 
     
     
