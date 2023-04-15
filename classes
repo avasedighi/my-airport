@@ -18,7 +18,7 @@ class Passenger:
         self.birthDate = birthDate
         self.sex = sex
         self.nationality = nationality
-        self.idCode = idCode
+        self._idCode = idCode
     def needAdultTicket(self):
         if self.birthDate.isAdult():
             return True
@@ -37,7 +37,7 @@ class Passenger:
 
 
 class Ticket:
-    def __init__(self, ticketID: str, flightNumber: int, passenger: Passenger, ticketType: str, price: float, flightAllowedLuggage: float):
+    def __init__(self, ticketID: str, flightNumber: str, passenger: Passenger, ticketType: str, price: float, flightAllowedLuggage: float):
         self.ticketID = ticketID
         self.flightNumber = flightNumber
         self.passenger = passenger
