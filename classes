@@ -51,3 +51,20 @@ class Ticket:
         print(self.price)
     def getReservationID(self):
         return id(Passenger)
+
+
+class Aircraft:
+    def __init__(self, name: str, manufacturer: str, lengthInMeter: float, requiredCabinCrew: int, capacity: int, seatLetters: list, firstFlight: BirthDate):
+        self.name = name
+        self.manufacturer = manufacturer
+        self.lengthInMeter = lengthInMeter
+        self._requiredCabinCrew = requiredCabinCrew
+        self._capacity = capacity
+        self.seatLetters = seatLetters
+        self.firstFlight = firstFlight
+    def howOld(self):
+        return self.firstFlight.age()
+    def isNew(self):
+        if self.firstFlight.age() <= 25:
+            return True
+        return False
