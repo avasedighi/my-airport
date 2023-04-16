@@ -168,8 +168,36 @@ IranAir = Airline('Iran Air', 'IranAir', 'International', PhoneNumber('+98', '02
 
 
 class Flight:
-    def __init__(self, flightNumber: str, airline: Airline):
+    def __init__(self, flightNumber: str, airline: Airline, aircraft: Aircraft,
+                fromID: str, toID: str, scheduledDepartureTime: Time, 
+                actualDepartureTime: Time, arrivalTime: Time):
         self.flightNumber = flightNumber
+        self.airline = airline
+        self.aircraft = aircraft
+        self.fromID = fromID
+        self.toID = toID
+        self.scheduledDepartureTime = scheduledDepartureTime
+        self.actualDepartureTime = actualDepartureTime
+        self.arrivalTime = arrivalTime
+        self.capacity = self.aircraft._capacity
+    
+    def getFlightNumber(self):
+        print(self.flightNumber)
+
+    def isDylayed(self):
+        if self.scheduledDepartureTime == self.actualDepartureTime:
+            return False
+        return True
+
+    def howMuchDelay(self):
+        return Time(self.actualDepartureTime.hour - self.scheduledDepartureTime.hour,
+                    self.actualDepartureTime.minute - self.scheduledDepartureTime.minute,
+                    self.actualDepartureTime.second - self.scheduledDepartureTime.second)
+
+    def flightDuration(self):
+        return Time(self.arrivalTime.hour - self.actualDepartureTime.hour,
+                    self.arrivalTime.minute - self.actualDepartureTime.minute,
+                    self.arrivalTime.second - self.actualDepartureTime.second)
 
 
 class FlightCard:
