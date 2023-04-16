@@ -3,7 +3,7 @@ class Time:
         self.hour = hour
         self.minute = minute
         self.second = second
-    
+
     def showItInHour(self):
         return self.second / 3600 + self.minute / 60 + self.hour
 
@@ -93,6 +93,7 @@ passenger1 = Passenger('Ava', BirthDate(2004, 4, 13), 'female', 'Iran', '3515',
                        PhoneNumber('+98', '9164474078'))
 # a sample passenger (it's me actually.)
 
+
 class Ticket:
     def __init__(self, ticketID: str, flightNumber: str, passenger: Passenger,
                  ticketType: str, price: float, flightAllowedLuggage: float):
@@ -133,10 +134,11 @@ class Aircraft:
             return True
         return False
 
+
 aircraft1 = Aircraft('Boeing 737-800', 'Boeing', '40', 2, 140,
-                    ['A', 'B', 'C', 'D', 'E', 'F'], BirthDate(1997, 7, 31))
+                     ['A', 'B', 'C', 'D', 'E', 'F'], BirthDate(1997, 7, 31))
 aircraft2 = Aircraft('Airbus A310-300', 'Airbus', '47', 3, 170,
-                    ['A', 'B', 'C', 'D', 'E', 'F'], BirthDate(1987, 2, 22))
+                     ['A', 'B', 'C', 'D', 'E', 'F'], BirthDate(1987, 2, 22))
 # two examples of airplanes which I like the first one more.
 
 
@@ -147,7 +149,7 @@ class Airline:
         self.callSign = callSign
         self.airlineType = airlineType
         self.phoneNumber = phoneNumber
-        
+
     def isIranian(self):
         if self.phoneNumber.worldZone() == 'Iran':
             return True
@@ -163,14 +165,17 @@ class Airline:
             return ['Imam Khomeini International Airport',
                     'Mehrabad International Airport']
         return ['unknown airports']
-        
-IranAir = Airline('Iran Air', 'IranAir', 'International', PhoneNumber('+98', '02146621888'))
+
+
+IranAir = Airline('Iran Air', 'IranAir', 'International',
+                  PhoneNumber('+98', '02146621888'))
 # an example of an airline that is also the best airline in Iran.
+
 
 class Flight:
     def __init__(self, flightNumber: str, airline: Airline, aircraft: Aircraft,
-                fromID: str, toID: str, scheduledDepartureTime: Time, 
-                actualDepartureTime: Time, arrivalTime: Time):
+                 fromID: str, toID: str, scheduledDepartureTime: Time,
+                 actualDepartureTime: Time, arrivalTime: Time):
         self.flightNumber = flightNumber
         self.airline = airline
         self.aircraft = aircraft
@@ -180,7 +185,7 @@ class Flight:
         self.actualDepartureTime = actualDepartureTime
         self.arrivalTime = arrivalTime
         self.capacity = self.aircraft._capacity
-    
+
     def getFlightNumber(self):
         print(self.flightNumber)
 
@@ -203,6 +208,7 @@ class Flight:
 current_flight = Flight('2538', IranAir, aircraft1, 'SHZ', 'THR',
                         Time(20, 30, 0), Time(20, 48, 57), Time(22, 9, 27))
 # this flight will update in order to issue the boarding pass.
+
 
 class BoardingPass:
     def __init__(self, flightNumber: str,  gate: str, passenger: Passenger,
@@ -231,8 +237,10 @@ class BoardingPass:
                                            (len(self.carrier.seatLetters)*3)):
             return True
         return False
+
     def whatIsTheCarrier(self):
         return (self.carrier)
-        
-boarding_pass_1 = BoardingPass(Current_flight, 'A12', passenger1, 'B16')
+
+
+boarding_pass_1 = BoardingPass(current_flight, 'A12', passenger1, 'B16')
 # it's jusr a sample boarding pass.
