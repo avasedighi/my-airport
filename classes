@@ -147,7 +147,6 @@ class Airline:
         self.callSign = callSign
         self.airlineType = airlineType
         self.phoneNumber = phoneNumber
-        self.staff = staff
         
     def isIranian(self):
         if self.phoneNumber.worldZone() == 'Iran':
@@ -236,4 +235,4 @@ class BoardingPass:
         return (self.carrier)
         
 boarding_pass_1 = BoardingPass(Current_flight, 'A12', passenger1, 'B16')
-# it's jusr a sample boardinf pass.
+# it's jusr a sample boarding pass.
