@@ -93,7 +93,7 @@ class Ticket:
     def showPrice(self):
         print(self.price)
 
-    def getReservationID(self):
+    def _getReservationID(self):
         return id(Passenger)
 
 
