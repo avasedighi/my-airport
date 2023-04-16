@@ -200,14 +200,19 @@ class Flight:
                     self.arrivalTime.second - self.actualDepartureTime.second)
 
 
-class FlightCard:
-    def __init__(self, flight: Flight,  gate: str, passenger: Passenger,
+current_flight = Flight('2538', IranAir, aircraft1, 'SHZ', 'THR',
+                        Time(20, 30, 0), Time(20, 48, 57), Time(22, 9, 27))
+# this flight will update in order to issue the boarding pass.
+
+class BoardingPass:
+    def __init__(self, flightNumber: str,  gate: str, passenger: Passenger,
                  seatNumber: str):
-        self.flight = flight
+        self.flight = current_flight
+        self.flightNumber = self.flight.flightNumber
         self.gate = gate
         self.passenger = passenger
         self.seatNumber = seatNumber
-        self.carrier = Aircraft('Boeing737-800', 'Boeing', '40', 2, 140,
+        self.carrier = Aircraft('Boeing 737-800', 'Boeing', '40', 2, 140,
                                 ['A', 'B', 'C', 'D', 'E', 'F'],
                                 BirthDate(1997, 7, 31))
 
@@ -219,11 +224,15 @@ class FlightCard:
         return False
 
     def showTheGate(self):
-        print(self.gate)
+        return(self.gate)
 
     def isCloseToCockpit(self):
         if eval(self.seatNumber[1:-1]) <= (self.carrier._capacity /
                                            (len(self.carrier.seatLetters)*3)):
             return True
         return False
-
+    def whatIsTheCarrier(self):
+        return (self.carrier)
+        
+boarding_pass_1 = BoardingPass(Current_flight, 'A12', passenger1, 'B16')
+# it's jusr a sample boardinf pass.
