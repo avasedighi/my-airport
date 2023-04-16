@@ -37,19 +37,22 @@ class PhoneNumber:
             return 'Russian'
         if self.callingCode == '+8':
             return 'East Asia'
-        if self.callingCode == '9':
+        if self.callingCode == '+9':
             return 'Middle East'
+        if self.callingCode == '+98':
+            return 'Iran'
         return 'Unknown'
 
-
+ 
 class Passenger:
     def __init__(self, name: str, birthDate: BirthDate, sex: str,
-                 nationality: str, idCode: str):
+                 nationality: str, idCode: str, phoneNumber: PhoneNumber):
         self.name = name
         self.birthDate = birthDate
         self.sex = sex
         self.nationality = nationality
         self._idCode = idCode
+        self._phoneNumber = phoneNumber
 
     def needAdultTicket(self):
         if self.birthDate.isAdult():
