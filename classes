@@ -43,23 +43,29 @@ class Passenger:
 
 
 class Ticket:
-    def __init__(self, ticketID: str, flightNumber: str, passenger: Passenger, ticketType: str, price: float, flightAllowedLuggage: float):
+    def __init__(self, ticketID: str, flightNumber: str, passenger: Passenger,
+                 ticketType: str, price: float, flightAllowedLuggage: float):
         self.ticketID = ticketID
         self.flightNumber = flightNumber
         self._passenger = passenger
         self.ticketType = ticketType
         self.price = price
         self.flightAllowedLuggage = flightAllowedLuggage
+
     def getFlightNumber(self):
         print(self.flightNumber)
+
     def showPrice(self):
         print(self.price)
+
     def getReservationID(self):
         return id(Passenger)
 
 
 class Aircraft:
-    def __init__(self, name: str, manufacturer: str, lengthInMeter: float, requiredCabinCrew: int, capacity: int, seatLetters: list, firstFlight: BirthDate):
+    def __init__(self, name: str, manufacturer: str, lengthInMeter: float,
+                 requiredCabinCrew: int, capacity: int, seatLetters: list,
+                 firstFlight: BirthDate):
         self.name = name
         self.manufacturer = manufacturer
         self.lengthInMeter = lengthInMeter
@@ -67,33 +73,41 @@ class Aircraft:
         self._capacity = capacity
         self.seatLetters = seatLetters
         self.firstFlight = firstFlight
+
     def howOld(self):
         return self.firstFlight.age()
+
     def isNew(self):
         if self.firstFlight.age() <= 25:
             return True
         return False
 
 
-
-
 class FlightCard:
-    def __init__(self, flightNumber: str, passengerName: str, passengerLastName: str, seatNumber: str, carrier: Aircraft, gate: str):
+    def __init__(self, flightNumber: str,  gate: str, passengerName: str,
+                 passengerLastName: str, seatNumber: str):
         self.flightNumber = flightNumber
+        self.gate = gate
         self.passengerName = passengerName
         self.passengerLastName = passengerLastName
         self.seatNumber = seatNumber
-        self.carrier = carrier
-        self.gate = gate
+        self.carrier = Aircraft('Boeing737-800', 'Boeing', '40', 2, 140,
+                                ['A', 'B', 'C', 'D', 'E', 'F'],
+                                BirthDate(1997, 7, 31))
+
     def hasWindow(self):
         if self.seatNumber[0] == self.carrier.seatLetters[0]:
             return True
         elif self.seatNumber[0] == self.carrier.seatLetters[-1]:
             return True
         return False
+
     def showTheGate(self):
         print(self.gate)
+
     def isCloseToCockpit(self):
-        if eval(self.seatNumber[1:-1]) <= (self.carrier._capacity / (len(self.carrier.seatLetters)*3)):
+        if eval(self.seatNumber[1:-1]) <= (self.carrier._capacity /
+                                           (len(self.carrier.seatLetters)*3)):
             return True
         return False
+
