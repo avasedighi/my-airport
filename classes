@@ -131,24 +131,22 @@ class Airline:
         self.airlineType = airlineType
         self.phoneNumber = phoneNumber
         self.staff = staff
-
-    def showHubsList(self):
+        
+    def isIranian(self):
         if self.phoneNumber.worldZone() == 'Iran':
-            return ['Imam Khomeini International Airport',
-                    'Mehrabad International Airport']
+            return True
+        return False
 
     def isInterntional(self):
         if self.airlineType == 'International':
             return True
         return False
-    
-    def getICAOCountryCode(self):
+
+    def showHubsList(self):
         if self.phoneNumber.worldZone() == 'Iran':
-            return 'OI'
-    
-    def isIranian(self):
-        if self.phoneNumber.worldZone() == 'Iran':
-            return True
+            return ['Imam Khomeini International Airport',
+                    'Mehrabad International Airport']
+        return ['unknown airports']
         
 IranAir = Airline('Iran Air', 'IranAir', 'International', PhoneNumber('+98', '02146621888'))
 
