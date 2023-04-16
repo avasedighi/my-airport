@@ -1,3 +1,19 @@
+class Time:
+    def __init__(self, hour: int, minute: int, second: float):
+        self.hour = hour
+        self.minute = minute
+        self.second = second
+    
+    def showItInHour(self):
+        return self.second / 3600 + self.minute / 60 + self.hour
+
+    def showItInMinute(self):
+        return self.second / 60 + self.minute + self.hour * 60
+
+    def showItInSecond(self):
+        return self.second + self.minute * 60 + self.hour * 3600
+
+
 class BirthDate:
     def __init__(self, year: int, month: int, day: int):
         self.year = year
