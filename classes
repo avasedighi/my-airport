@@ -14,6 +14,34 @@ class BirthDate:
             return False
 
 
+class PhoneNumber:
+    def __init__(self, callingCode: str, number: str):
+        self.callingCode = callingCode
+        self.number = number
+
+    def getCallingCode(self):
+        print(self.callingCode)
+
+    def worldZone(self):
+        if self.callingCode == '+1':
+            return 'North America'
+        if self.callingCode == '+2':
+            return 'Africa'
+        if self.callingCode == '+3' or self.callingCode == '+4':
+            return 'Europe'
+        if self.callingCode == '+5':
+            return 'South & central America'
+        if self.callingCode == '+6':
+            return 'Southeast Asia & Oceania'
+        if self.callingCode == '+7':
+            return 'Russian'
+        if self.callingCode == '+8':
+            return 'East Asia'
+        if self.callingCode == '9':
+            return 'Middle East'
+        return 'Unknown'
+
+
 class Passenger:
     def __init__(self, name: str, birthDate: BirthDate, sex: str,
                  nationality: str, idCode: str):
