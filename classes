@@ -43,7 +43,7 @@ class PhoneNumber:
             return 'Iran'
         return 'Unknown'
 
- 
+
 class Passenger:
     def __init__(self, name: str, birthDate: BirthDate, sex: str,
                  nationality: str, idCode: str, phoneNumber: PhoneNumber):
@@ -71,6 +71,10 @@ class Passenger:
             return True
         else:
             return False
+
+
+passenger1 = Passenger('Ava', BirthDate(2004, 4, 13), 'female', 'Iran', '3515',
+                       PhoneNumber('+98', '9164474078'))
 
 
 class Ticket:
@@ -114,13 +118,37 @@ class Aircraft:
         return False
 
 
-class FlightCard:
-    def __init__(self, flightNumber: str,  gate: str, passengerName: str,
-                 passengerLastName: str, seatNumber: str):
+class staff:
+    def __init__(self, name: str):
+        self.name = name
+
+
+class Airline:
+    def __init__(self, airlineName: str, callSign: str, airlineType: str,
+                 phoneNumber: PhoneNumber):
+        self.airlineName = airlineName
+        self.callSign = callSign
+        self.airlineType = airlineType
+        self.phoneNumber = phoneNumber
+        self.staff = staff
+
+    def isInterntional(self):
+        if self.airlineType == 'International':
+            return True
+        return False
+
+
+class Flight:
+    def __init__(self, flightNumber: str, airline: Airline):
         self.flightNumber = flightNumber
+
+
+class FlightCard:
+    def __init__(self, flight: Flight,  gate: str, passenger: Passenger,
+                 seatNumber: str):
+        self.flight = flight
         self.gate = gate
-        self.passengerName = passengerName
-        self.passengerLastName = passengerLastName
+        self.passenger = passenger
         self.seatNumber = seatNumber
         self.carrier = Aircraft('Boeing737-800', 'Boeing', '40', 2, 140,
                                 ['A', 'B', 'C', 'D', 'E', 'F'],
