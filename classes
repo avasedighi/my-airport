@@ -233,8 +233,8 @@ class BoardingPass:
         return(self.gate)
 
     def isCloseToCockpit(self):
-        if eval(self.seatNumber[1:-1]) <= (self.carrier._capacity /
-                                           (len(self.carrier.seatLetters)*3)):
+        if eval(self.seatNumber[1:]) <= (self.carrier._capacity /
+                                         (len(self.carrier.seatLetters)*3)):
             return True
         return False
 
