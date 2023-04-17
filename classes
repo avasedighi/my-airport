@@ -250,7 +250,7 @@ cclass Staff:
                  workShift: str, entranceTime: Time):
         self.firstName = firstName
         self.lastName = lastName
-        self.staffCode = staffCode
+        self._staffCode = staffCode
         self.workShift = workShift
         self.entranceTime = entranceTime
 
