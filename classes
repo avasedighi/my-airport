@@ -297,13 +297,14 @@ cclass Staff:
 
 class Airport:
     def __init__ (self, name: str, airportCode: str, airportType: str,
-                  address: str, phoneNumber: PhoneNumber):
+                  address: str, phoneNumber: PhoneNumber, salary: float):
         self.name = name
         self.airportCode = airportCode
         self.airportType = airportType
         self.address = address
         self.phoneNumber = phoneNumber
         self.staff = airport_controllers
+        staf.salary = salary
 
     def isInternational(self):
         if self.airportType == 'International':
