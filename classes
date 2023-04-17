@@ -246,7 +246,7 @@ boarding_pass_1 = BoardingPass(current_flight, 'A12', passenger1, 'B16')
 # it's jusr a sample boarding pass.
 
 
-class Staff:
+class AirportStaff:
     def __init__(self, firstName: str, lastName: str, staffCode: int,
                  workShift: str, entranceTime: Time):
         self.firstName = firstName
@@ -307,7 +307,7 @@ class Airport:
         self.airportType = airportType
         self.address = address
         self.phoneNumber = phoneNumber
-        self.staff = StaffList
+        self.airportStaff = StaffList
 
     def isInternational(self):
         if self.airportType == 'International':
@@ -320,7 +320,7 @@ class Airport:
         return False
 
 
-class AirportSeller(Staff):
+class AirportSeller(AirportStaff):
     def __init__(self, firstName, lastName, staffCode,
                  workShift, entranceTime, shopCode: str, income: int):
         super().__init__(firstName, lastName, staffCode,
@@ -332,7 +332,7 @@ class AirportSeller(Staff):
         print(self.income)
 
 
-class TicketController(Staff):
+class TicketController(AirportStaff):
     def __init__ (self, firstName, lastName, staffCode, workShift, entranceTime, gateCode: str):
         super().__init__(firstName, lastName, staffCode, workShift, entranceTime)
         self.gateCode = gateCode
@@ -343,7 +343,7 @@ class TicketController(Staff):
         return 80000
 
 
-class AirTrafficController(Staff):
+class AirTrafficController(AirportStaff):
     def __init__ (self, firstName, lastName, staffCode, workShift, entranceTime, runwayCode: str):
         super().__init__(firstName, lastName, staffCode, workShift, entranceTime)
         self.runwayCode = runwayCode
@@ -357,7 +357,7 @@ class AirTrafficController(Staff):
             return 150000
 
 
-class AirportJanito(Staff):
+class AirportJanito(AirportStaff):
     def __init__ (self, firstName, lastName, staffCode, workShift, entranceTime, areaCode: str):
         super().__init__(firstName, lastName, staffCode, workShift, entranceTime)
         self.areaCode = areaCode
