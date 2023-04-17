@@ -351,3 +351,11 @@ class AirTrafficController(Staff):
             return 140000
         if self.workShift == 'night':
             return 150000
+
+
+class AirportJanito(Staff):
+    def __init__ (self, firstName, lastName, staffCode, workShift, entranceTime, areaCode: str):
+        super().__init__(firstName, lastName, staffCode, workShift, entranceTime)
+        self.areaCode = areaCode
+    def howMuchSalary(self):
+        return 30000
