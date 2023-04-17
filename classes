@@ -338,3 +338,16 @@ class TicketController(Staff):
         if self.workShift == 'morning' or self.workShift == 'evening':
             return 70000
         return 80000
+
+class AirTrafficController(Staff):
+    def __init__ (self, firstName, lastName, staffCode, workShift, entranceTime, runwayCode: str):
+        super().__init__(firstName, lastName, staffCode, workShift, entranceTime)
+        self.runwayCode = runwayCode
+
+    def howMuchSalary(self):
+        if self.workShift == 'morning':
+            return 130000
+        if self.workShift == 'evening':
+            return 140000
+        if self.workShift == 'night':
+            return 150000
