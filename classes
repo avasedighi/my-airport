@@ -247,7 +247,7 @@ boarding_pass_1 = BoardingPass(current_flight, 'A12', passenger1, 'B16')
 
 
 class Staff:
-    def __init__ (self, firstName: str, lastName: str, staffCode: int,
+    def __init__(self, firstName: str, lastName: str, staffCode: int,
                  workShift: str, entranceTime: Time):
         self.firstName = firstName
         self.lastName = lastName
@@ -261,25 +261,25 @@ class Staff:
 
     def timeLeftFromShift(self):
         if self.workShift == 'morning':
-            return Time(15 - self.entranceTime.hour , 59 - self.entranceTime.minute,
-                 59 - self.entranceTime.second)
+            return Time(15 - self.entranceTime.hour, 59 - self.entranceTime.minute,
+                        59 - self.entranceTime.second)
         if self.workShift == 'evening':
-            return Time(23 - self.entranceTime.hour , 59 - self.entranceTime.minute,
-                 59 - self.entranceTime.second)
+            return Time(23 - self.entranceTime.hour, 59 - self.entranceTime.minute,
+                        59 - self.entranceTime.second)
         if self.workShift == 'night':
-            return Time(7 - self.entranceTime.hour , 59 - self.entranceTime.minute,
-                 59 - self.entranceTime.second)
+            return Time(7 - self.entranceTime.hour, 59 - self.entranceTime.minute,
+                        59 - self.entranceTime.second)
 
     def howMuchWorked(self):
         if self.workShift == 'morning':
-            return Time( self.entranceTime.hour - 8 , self.entranceTime.minute,
-                 self.entranceTime.second)
+            return Time(self.entranceTime.hour - 8, self.entranceTime.minute,
+                        self.entranceTime.second)
         if self.workShift == 'evening':
-            return Time( self.entranceTime.hour - 16 , self.entranceTime.minute,
-                 self.entranceTime.second)
+            return Time(self.entranceTime.hour - 16, self.entranceTime.minute,
+                        self.entranceTime.second)
         if self.workShift == 'night':
-            return Time( self.entranceTime.hour , self.entranceTime.minute,
-                 self.entranceTime.second)
+            return Time(self.entranceTime.hour, self.entranceTime.minute,
+                        self.entranceTime.second)
 
     def isOnTime(self):
         if self.workShift == 'morning':
@@ -296,15 +296,18 @@ class Staff:
             return False
 
 
+StaffList = []
+
+
 class Airport:
-    def __init__ (self, name: str, airportCode: str, airportType: str,
-                  address: str, phoneNumber: PhoneNumber, salary: float):
+    def __init__(self, name: str, airportCode: str, airportType: str,
+                 address: str, phoneNumber: PhoneNumber, salary: float):
         self.name = name
         self.airportCode = airportCode
         self.airportType = airportType
         self.address = address
         self.phoneNumber = phoneNumber
-        self.staff = airport_controllers
+        self.staff = StaffList
 
     def isInternational(self):
         if self.airportType == 'International':
@@ -312,21 +315,21 @@ class Airport:
         return False
 
     def isBusy(self):
-        if self.staff.workShift == ( 'morning' or 'evening' ):
+        if self.staff.workShift == ('morning' or 'evening'):
             return True
         return False
 
 
 class AirportSeller(Staff):
-    def __init__ (self, firstName, lastName, staffCode,
+    def __init__(self, firstName, lastName, staffCode,
                  workShift, entranceTime, shopCode: str, income: int):
         super().__init__(firstName, lastName, staffCode,
-                 workShift, entranceTime)
+                         workShift, entranceTime)
         self.shopeCode = shopCode
         self.income = income
 
     def howMuchSalary(self):
-        print( self.income )
+        print(self.income)
 
 
 class TicketController(Staff):
@@ -338,6 +341,7 @@ class TicketController(Staff):
         if self.workShift == 'morning' or self.workShift == 'evening':
             return 70000
         return 80000
+
 
 class AirTrafficController(Staff):
     def __init__ (self, firstName, lastName, staffCode, workShift, entranceTime, runwayCode: str):
@@ -357,5 +361,6 @@ class AirportJanito(Staff):
     def __init__ (self, firstName, lastName, staffCode, workShift, entranceTime, areaCode: str):
         super().__init__(firstName, lastName, staffCode, workShift, entranceTime)
         self.areaCode = areaCode
+
     def howMuchSalary(self):
         return 30000
