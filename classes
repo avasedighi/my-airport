@@ -293,3 +293,24 @@ cclass Staff:
             if self.entranceTime == Time(0, 0, 0):
                 return True
             return False
+
+
+class Airport:
+    def __init__ (self, name: str, airportCode: str, airportType: str,
+                  address: str, phoneNumber: PhoneNumber):
+        self.name = name
+        self.airportCode = airportCode
+        self.airportType = airportType
+        self.address = address
+        self.phoneNumber = phoneNumber
+        self.staff = airport_controllers
+
+    def isInternational(self):
+        if self.airportType == 'International':
+            return True
+        return False
+
+    def isBusy(self):
+        if self.staff.workShift == ( 'morning' or 'evening' ):
+            return True
+        return False
