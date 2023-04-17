@@ -245,7 +245,7 @@ class BoardingPass:
 boarding_pass_1 = BoardingPass(current_flight, 'A12', passenger1, 'B16')
 # it's jusr a sample boarding pass.
 
-class Staff:
+cclass Staff:
     def __init__ (self, firstName: str, lastName: str, staffCode: int,
                  workShift: str, entranceTime: Time):
         self.firstName = firstName
@@ -260,4 +260,36 @@ class Staff:
 
     def timeLeftFromShift(self):
         if self.workShift == 'morning':
-            Time(14 - self.entranceTime.hour , 0 , 0)
+            return Time(15 - self.entranceTime.hour , 59 - self.entranceTime.minute,
+                 59 - self.entranceTime.second)
+        if self.workShift == 'evening':
+            return Time(23 - self.entranceTime.hour , 59 - self.entranceTime.minute,
+                 59 - self.entranceTime.second)
+        if self.workShift == 'night':
+            return Time(7 - self.entranceTime.hour , 59 - self.entranceTime.minute,
+                 59 - self.entranceTime.second)
+
+    def howMuchWorked(self):
+        if self.workShift == 'morning':
+            return Time( self.entranceTime.hour - 8 , self.entranceTime.minute,
+                 self.entranceTime.second)
+        if self.workShift == 'evening':
+            return Time( self.entranceTime.hour - 16 , self.entranceTime.minute,
+                 self.entranceTime.second)
+        if self.workShift == 'night':
+            return Time( self.entranceTime.hour , self.entranceTime.minute,
+                 self.entranceTime.second)
+
+    def isOnTime(self):
+        if self.workShift == 'morning':
+            if self.entranceTime == Time(8, 0, 0):
+                return True
+            return False
+        if self.workShift == 'evening':
+            if self.entranceTime == Time(16, 0, 0):
+                return True
+            return False
+        if self.workShift == 'night':
+            if self.entranceTime == Time(0, 0, 0):
+                return True
+            return False
