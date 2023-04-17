@@ -245,7 +245,8 @@ class BoardingPass:
 boarding_pass_1 = BoardingPass(current_flight, 'A12', passenger1, 'B16')
 # it's jusr a sample boarding pass.
 
-cclass Staff:
+
+class Staff:
     def __init__ (self, firstName: str, lastName: str, staffCode: int,
                  workShift: str, entranceTime: Time):
         self.firstName = firstName
@@ -317,7 +318,8 @@ class Airport:
 
 
 class AirportSeller(Staff):
-    def __init__ (self, shopeCoder: str, income: float):
+    def __init__ (self, firstName, lastName, staffCode,
+                 workShift, entranceTime, shopCode: str, income: int):
         super().__init__(firstName, lastName, staffCode,
                  workShift, entranceTime)
         self.shopeCode = shopCode
@@ -327,3 +329,12 @@ class AirportSeller(Staff):
         print( self.income )
 
 
+class TicketController(Staff):
+    def __init__ (self, firstName, lastName, staffCode, workShift, entranceTime, gateCode: str):
+        super().__init__(firstName, lastName, staffCode, workShift, entranceTime)
+        self.gateCode = gateCode
+
+    def howMuchSalary(self):
+        if self.workShift == 'morning' or self.workShift == 'evening':
+            return 70000
+        return 80000
